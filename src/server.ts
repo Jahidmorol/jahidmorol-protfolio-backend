@@ -1,8 +1,8 @@
 import { Server } from 'http';
 import mongoose from 'mongoose';
 import app from './app';
-import seedUser from './app/DB';
 import config from './app/config';
+import seedUser from './app/DB';
 
 let server: Server;
 async function main() {
@@ -10,7 +10,7 @@ async function main() {
     await mongoose.connect(config.database_url as string);
     seedUser();
     server = app.listen(config.port, () => {
-      console.log(`Server for Karukon is listening on port ${config.port}`);
+      console.log(`jahidmorol protfolio is listening on port ${config.port}`);
     });
   } catch (error) {
     console.log(error);
@@ -18,9 +18,9 @@ async function main() {
 }
 main();
 
-//  handle unhandledRejection
+// for asynchronous error rejection
 process.on('unhandledRejection', () => {
-  console.log('🚩🚩 unhandledRejection error 🚩🚩');
+  console.log(`😈 unhandledRejection is detected , shutting down ...`);
   if (server) {
     server.close(() => {
       process.exit(1);
@@ -29,8 +29,8 @@ process.on('unhandledRejection', () => {
   process.exit(1);
 });
 
-// handle uncaughtException
+// for synchronous error rejection
 process.on('uncaughtException', () => {
-  console.log('🚩🚩 uncaughtException error 🚩🚩');
+  console.log(`😈 uncaughtException is detected , shutting down ...`);
   process.exit(1);
 });
