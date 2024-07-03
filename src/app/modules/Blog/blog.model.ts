@@ -1,11 +1,30 @@
 import { Schema, model } from 'mongoose';
-import { TBlog } from './blog.types';
+import { TBlog, TComment, TPost, TRepliesSchema } from './blog.types';
 
-const blogSchema = new Schema<TBlog>({
+const PostSchema = new Schema<TPost>({
   title: { type: String, required: true },
+  photos: { type: [String], required: true },
   content: { type: String, required: true },
-  publicationDate: { type: Date, default: Date.now },
+  tags: { type: [String], required: true },
+  views: { type: Number, required: true },
+  commentsCount: { type: Number, required: true },
 });
 
-const Blog = model('Blog', blogSchema);
+const RepliesSchema = new Schema<TRepliesSchema>({
+  author: { type: String, required: true },
+  content: { type: String, required: true },
+});
+
+const CommentSchema = new Schema<TComment>({
+  author: { type: String, required: true },
+  content: { type: String, required: true },
+  replies: { type: [RepliesSchema], default: [] },
+});
+
+const BlogSchema = new Schema<TBlog>({
+  post: { type: PostSchema, required: true },
+  comments: { type: [CommentSchema], default: [] },
+});
+
+const Blog = model('Blog', BlogSchema);
 export default Blog;

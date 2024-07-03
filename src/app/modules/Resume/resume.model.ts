@@ -1,8 +1,8 @@
 import { Schema, model } from 'mongoose';
-import userData from './profile.constant';
-import { TProfile } from './profile.type';
+import userData from './resume.constant';
+import { TResume } from './resume.type';
 
-const profileSchema = new Schema<TProfile>({
+const ResumeSchema = new Schema<TResume>({
   name: { type: String, required: true, default: userData.name },
   designation: { type: String, required: true, default: userData.designation },
   introduction: {
@@ -34,6 +34,6 @@ const profileSchema = new Schema<TProfile>({
   hobby: { type: String },
 });
 
-const Profile = model('Profile', profileSchema);
+const Resume = model('Resume', ResumeSchema);
 
-export default Profile;
+export default Resume;

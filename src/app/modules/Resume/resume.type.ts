@@ -1,4 +1,4 @@
-export type TProfile = {
+export type TResume = {
   name: string;
   designation: string;
   introduction: string;
