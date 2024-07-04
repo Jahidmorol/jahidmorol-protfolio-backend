@@ -1,11 +1,10 @@
 export type TProject = {
+  _id?: string;
   title: string;
   description: string;
-  frontEndTech: string;
-  backEndTech: string;
-  frontEndRepo: string;
-  backEndRepo: string;
+  categories: string[];
+  images: string[];
   liveLink: string;
-  image: string;
-  duration: string;
+  githubFrontend: string;
+  githubBackend: string;
 };

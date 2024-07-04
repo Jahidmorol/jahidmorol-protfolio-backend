@@ -18,6 +18,22 @@ const getBlog = async (id: string) => {
 };
 
 const getBlogs = async () => {
+  // const blogs = new QueryBuilder(Blog.find(), query)
+  //   .search([])
+  //   .filter()
+  //   .sort()
+  //   .paginate()
+  //   .fields();
+
+  // const result = await blogs.modelQuery;
+  // const meta = await blogs.countTotal();
+
+  // return {
+  //   meta,
+  //   result,
+  // };
+
+  // v1 get blog ---=>
   const blogs = await Blog.find();
   return blogs;
 };

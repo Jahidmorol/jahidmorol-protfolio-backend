@@ -26,7 +26,7 @@ const getBlog = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-const getBlogs = catchAsync(async (_req: Request, res: Response) => {
+const getBlogs = catchAsync(async (req: Request, res: Response) => {
   const result = await BlogServices.getBlogs();
 
   sendResponse(res, {

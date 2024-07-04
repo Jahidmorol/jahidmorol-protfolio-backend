@@ -4,15 +4,13 @@ import { TProject } from './projects.type';
 const projectSchema = new Schema<TProject>({
   title: { type: String, required: true },
   description: { type: String, required: true },
-  frontEndTech: { type: String },
-  backEndTech: { type: String },
-  frontEndRepo: { type: String },
-  backEndRepo: { type: String },
+  images: { type: [String], required: true },
+  categories: { type: [String] },
   liveLink: { type: String },
-  image: { type: String },
-  duration: { type: String },
+  githubFrontend: { type: String },
+  githubBackend: { type: String },
 });
 
-const Project = model('Project', projectSchema);
+const Project = model<TProject>('Project', projectSchema);
 
 export default Project;
